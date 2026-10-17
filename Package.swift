@@ -13,6 +13,10 @@ let package = Package(
     ],
     targets: [
         .target(name: "TaskProcessor"),
+        .executableTarget(
+            name: "TaskProcessorDemo",
+            dependencies: ["TaskProcessor"]
+        ),
         .testTarget(
             name: "TaskProcessorTests",
             dependencies: ["TaskProcessor"]
