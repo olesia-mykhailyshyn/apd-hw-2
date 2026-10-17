@@ -170,4 +170,14 @@ file change was shown to me and approved before it was written.
 
 ## Final review
 
-<!-- Summarize remaining risks and confirm that you inspected the final diff. -->
+**Remaining risks**
+- Grey areas of the contract (worker throws its own error, or a retry attempt
+  fails, after the run was cancelled): I chose `.failed` in both cases and
+  documented it in PLAN.md. A hidden test could expect another rule.
+- A gate-based test would hang instead of failing if scheduling broke in the
+  future (async XCTest has no default timeout).
+
+**Final check**
+- `swift build`: 0 warnings; `swift test`: 24/24 passed, stable over repeated
+  runs; the demo runs all 5 scenarios.
+- I inspected the final diff of all changed files before committing.
